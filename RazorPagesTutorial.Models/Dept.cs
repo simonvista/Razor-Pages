@@ -2,7 +2,8 @@
 
 namespace RazorPagesTutorial.Models
 {
-    public class Class1
+    public enum Dept
     {
+        None,HR,IT,Payroll
     }
 }
