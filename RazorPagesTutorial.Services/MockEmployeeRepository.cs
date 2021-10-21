@@ -18,7 +18,7 @@ namespace RazorPagesTutorial.Services
                     Name = "Mary", 
                     Department = Dept.HR,
                     Email = "mary@pragimtech.com",
-                    PhotoPath = "mary.png"
+                    PhotoPath = "mary.jpg"
                 },
                 new Employee()
                 {
@@ -26,7 +26,7 @@ namespace RazorPagesTutorial.Services
                     Name = "John", 
                     Department = Dept.IT,
                     Email = "john@pragimtech.com",
-                    PhotoPath = "john.png"
+                    PhotoPath = "john.jpg"
                 },
                 new Employee()
                 {
@@ -34,7 +34,7 @@ namespace RazorPagesTutorial.Services
                     Name = "Sara", 
                     Department = Dept.IT,
                     Email = "sara@pragimtech.com",
-                    PhotoPath = "sara.png"
+                    PhotoPath = "sara.jpg"
                 },
                 new Employee()
                 {
@@ -42,7 +42,7 @@ namespace RazorPagesTutorial.Services
                     Name = "David",
                     Department = Dept.Payroll,
                     Email = "david@pragimtech.com",
-                    PhotoPath = "david.png"
+                    
                 },
             };
         }

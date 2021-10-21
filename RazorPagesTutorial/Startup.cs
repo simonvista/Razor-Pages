@@ -25,7 +25,7 @@ namespace RazorPagesTutorial
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-
+            //IOC
             services.AddSingleton<IEmployeeRepository,MockEmployeeRepository>();
         }
 
