@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPagesTutorial", "RazorPagesTutorial\RazorPagesTutorial.csproj", "{CA1D18BB-A945-44A6-B247-F731F8FF0390}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPagesTutorial", "RazorPagesTutorial\RazorPagesTutorial.csproj", "{CA1D18BB-A945-44A6-B247-F731F8FF0390}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
