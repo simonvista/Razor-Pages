@@ -5,7 +5,7 @@ using RazorPagesTutorial.Models;
 
 namespace RazorPagesTutorial.Services
 {
-    interface IEmployeeRepository
+    public interface IEmployeeRepository
     {
         IEnumerable<Employee> getAllEmployees();
     }
