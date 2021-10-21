@@ -12,7 +12,8 @@
 @*@page "/employees/view/{id:range(1,3)}"*@
 @*custom route constrain*@
 @*@page "/employees/view/{id:even}"*@
-@page "/employees/view/{id:even:min(2)}"
+@*@page "/employees/view/{id:even:min(2)}"*@
+@page "/employees/view/{id:min(1)}"
 @model RazorPagesTutorial.Pages.Employees.DetailsModel
 @{
     ViewData["Title"] = "Details page";
