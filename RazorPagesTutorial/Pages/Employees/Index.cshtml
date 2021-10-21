@@ -1,7 +1,7 @@
-﻿@*rout: base_url/employeelist*@
+﻿@*route: base_url/employeelist*@
 @*@page "/EmployeeList"*@
 
-@*rout: base_url/employees/employeelist*@
+@*route: base_url/employees/employeelist*@
 @*@page "EmployeeList"*@
 
 @*route parameters:base_url/employees/name*@
@@ -10,7 +10,9 @@
 
 @*route parameters:base_url/employees/name*@
 @*name is alphabet*@
-@page "{name:alpha}"
+@*@page "{name:alpha}"*@
+
+@page
 
 @model RazorPagesTutorial.Pages.Employees.IndexModel
 @{
@@ -35,7 +37,10 @@
             @*<img class="card-img-top img-thumbnail" src="@photoPath" asp-append-version="true" />*@
             <img class="card-img-top imgThumbnail" src="@photoPath" asp-append-version="true" />
             <div class="card-footer text-center">
-                <a href="#" class="btn btn-primary m-1">view</a>
+                <a 
+                    asp-page="/Employees/Details"
+                    asp-route-ID="@employee.Id"
+                    class="btn btn-primary m-1">view</a>
                 <a href="#" class="btn btn-warning m-1">edit</a>
                 <a href="#" class="btn btn-danger m-1">delete</a>
             </div>
