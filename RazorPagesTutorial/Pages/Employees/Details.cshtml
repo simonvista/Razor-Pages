@@ -1,5 +1,6 @@
 ﻿@*route parameter*@
-@page "{id?}"
+@*@page "{id?}"*@
+@page "/employees/view/{id}"
 @model RazorPagesTutorial.Pages.Employees.DetailsModel
 @{
     ViewData["Title"] = "Details page";
@@ -11,6 +12,7 @@
         <div class="card">
             <div class="card-header">
                 <h1>@Model.Employee.Name</h1>
+                @*<h3>Id: @Model.Id</h3>*@
             </div>
             <div class="card-body text-center">
                 <img class="card-img-top" src="@photoPath" asp-append-version="true"/>

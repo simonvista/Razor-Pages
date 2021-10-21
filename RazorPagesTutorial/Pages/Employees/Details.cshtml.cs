@@ -19,9 +19,14 @@ namespace RazorPagesTutorial.Pages.Employees
         }
 
         public Employee Employee { get; private set; }
+        //[BindProperty] works for OnPost by default
+        //[BindProperty(SupportsGet = true)]
+        //public int Id { get; set; }
 
-        public void OnGet(int id=1)
+        //public void OnGet(int id=1)
+        public void OnGet(int id)
         {
+            //Id = id;
             Employee =_employeeRepository.GetEmployee(id);
         }
     }
