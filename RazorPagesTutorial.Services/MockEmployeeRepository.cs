@@ -65,6 +65,7 @@ namespace RazorPagesTutorial.Services
                 employeeToUpdate.Name = updatedEmployee.Name;
                 employeeToUpdate.Email = updatedEmployee.Email;
                 employeeToUpdate.Department = updatedEmployee.Department;
+                employeeToUpdate.PhotoPath = updatedEmployee.PhotoPath;
             }
 
             return employeeToUpdate;
