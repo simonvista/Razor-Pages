@@ -30,5 +30,11 @@ namespace RazorPagesTutorial.Pages.Employees
 
             return Page();
         }
+
+        public IActionResult OnPost(Employee employee)
+        {
+            Employee= _employeeRepository.Update(employee);
+            return RedirectToPage("/Index");
+        }
     }
 }

@@ -56,5 +56,18 @@ namespace RazorPagesTutorial.Services
         {
             return _employees.FirstOrDefault(e => e.Id == id);
         }
+
+        public Employee Update(Employee updatedEmployee)
+        {
+            Employee employeeToUpdate= _employees.FirstOrDefault(e => e.Id == updatedEmployee.Id);
+            if (employeeToUpdate!=null)
+            {
+                employeeToUpdate.Name = updatedEmployee.Name;
+                employeeToUpdate.Email = updatedEmployee.Email;
+                employeeToUpdate.Department = updatedEmployee.Department;
+            }
+
+            return employeeToUpdate;
+        }
     }
 }
