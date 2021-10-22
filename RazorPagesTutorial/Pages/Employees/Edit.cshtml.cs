@@ -18,7 +18,9 @@ namespace RazorPagesTutorial.Pages.Employees
             _employeeRepository = employeeRepository;
         }
 
-        public Employee Employee { get; private set; }
+        //public Employee Employee { get; private set; }
+        [BindProperty]
+        public Employee Employee { get; set; }
         public IActionResult OnGet(int id)
         {
             Employee= _employeeRepository.GetEmployee(id);
@@ -30,9 +32,14 @@ namespace RazorPagesTutorial.Pages.Employees
             return Page();
         }
 
-        public IActionResult OnPost(Employee employee)
+        //public IActionResult OnPost(Employee employee)
+        //{
+        //    Employee = _employeeRepository.Update(employee);
+        //    return RedirectToPage("/Index");
+        //}
+        public IActionResult OnPost()
         {
-            Employee = _employeeRepository.Update(employee);
+            Employee = _employeeRepository.Update(Employee);
             return RedirectToPage("/Index");
         }
 
