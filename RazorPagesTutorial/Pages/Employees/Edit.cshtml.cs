@@ -28,24 +28,28 @@ namespace RazorPagesTutorial.Pages.Employees
         //public Employee Employee { get; private set; }
         [BindProperty]
         public Employee Employee { get; set; }
-        public IActionResult OnGet(int id)
-        {
-            Employee= _employeeRepository.GetEmployee(id);
-            if (Employee==null)
-            {
-                return RedirectToPage("/NotFound");
-            }
-
-            return Page();
-        }
+        
         [BindProperty]
         public IFormFile Photo { get; set; }
+        [BindProperty]
+        public bool Notify { get; set; }
+        public string Message { get; set; }
 
         //public IActionResult OnPost(Employee employee)
         //{
         //    Employee = _employeeRepository.Update(employee);
         //    return RedirectToPage("/Index");
         //}
+        public IActionResult OnGet(int id)
+        {
+            Employee = _employeeRepository.GetEmployee(id);
+            if (Employee == null)
+            {
+                return RedirectToPage("NotFound");
+            }
+
+            return Page();
+        }
         public IActionResult OnPost()
         {
             //delete & upload new photo
@@ -62,9 +66,14 @@ namespace RazorPagesTutorial.Pages.Employees
                 Employee.PhotoPath = ProcessingUploadedFile();
             }
             Employee = _employeeRepository.Update(Employee);
-            return RedirectToPage("/Index");
+            return RedirectToPage("Index");
         }
 
+        public void OnPostUpdateNotificationPreferences(int id)
+        {
+            Message = Notify ? "Email notification was on" : "Email notification was off";
+            Employee = _employeeRepository.GetEmployee(id);
+        }
         private string ProcessingUploadedFile()
         {
             string uniqueFileName = null;
