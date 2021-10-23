@@ -21,7 +21,7 @@ namespace RazorPagesTutorial.Pages.Employees
         }
         public void OnGet()
         {
-            Employees = _employeeRepository.getAllEmployees();
+            Employees = _employeeRepository.GetAllEmployees();
         }
     }
 }

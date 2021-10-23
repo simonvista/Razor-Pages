@@ -30,9 +30,11 @@
         </div>
     </div>
     }
-
+    @*view component*@
     <div class="col-sm-8">
-        @await Component.InvokeAsync("HeadCount");
+        @*object passed to parameter to invoke view component*@
+        @*@await Component.InvokeAsync("HeadCount",new {dept=Dept.IT});*@
+        @await Component.InvokeAsync("HeadCount", new {dept = Model.Employee.Department})
     </div>
 
     <div class="col-sm-8">

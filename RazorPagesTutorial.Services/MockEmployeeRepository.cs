@@ -47,7 +47,7 @@ namespace RazorPagesTutorial.Services
                 },
             };
         }
-        public IEnumerable<Employee> getAllEmployees()
+        public IEnumerable<Employee> GetAllEmployees()
         {
             return _employees;
         }
@@ -89,9 +89,14 @@ namespace RazorPagesTutorial.Services
             return employeeToDelete;
         }
 
-        public IEnumerable<DeptHeadCount> EmployeeCountByDept()
+        public IEnumerable<DeptHeadCount> EmployeeCountByDept(Dept? dept)
         {
-            return _employees.GroupBy(e => e.Department)
+            IEnumerable<Employee> query = _employees;
+            if (dept.HasValue)
+            {
+                query = query.Where(e => e.Department == dept.Value);
+            }
+            return query.GroupBy(e => e.Department)
                 .Select(g => new DeptHeadCount()
                 {
                     Department = g.Key.Value,

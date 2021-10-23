@@ -25,6 +25,8 @@
         width: 75px;
     }
 </style>
+@*no parameter passed to view component*@
+@await Component.InvokeAsync("HeadCount")
 <h1>Employees Index Page</h1>
 <div class="card-deck">
     @foreach (var employee in Model.Employees)
