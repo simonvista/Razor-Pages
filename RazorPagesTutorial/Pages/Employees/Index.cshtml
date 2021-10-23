@@ -45,7 +45,10 @@
                     asp-page="/Employees/Edit"
                     asp-route-ID="@employee.Id"
                     class="btn btn-warning m-1">edit</a>
-                <a href="#" class="btn btn-danger m-1">delete</a>
+                <a 
+                    asp-page="/Employees/Delete"
+                    asp-route-ID="@employee.Id" 
+                    class="btn btn-danger m-1">delete</a>
             </div>
         </div>
     }
