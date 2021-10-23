@@ -22,12 +22,11 @@
 }
 <div class="row justify-content-center m-3">
     @*@if (!string.IsNullOrEmpty(Model.Message))*@
-    @if (TempData["message"]!=null)
+    @if (Model.Message!=null)
     {
     <div class="col-sm-8">
         <div class="alert alert-primary">
-            @*@Model.Message*@
-            @TempData["message"]
+            @Model.Message
         </div>
     </div>
     }

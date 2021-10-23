@@ -78,6 +78,7 @@ namespace RazorPagesTutorial.Pages.Employees
         {
             Message = Notify ? "Email notification was on" : "Email notification was off";
             //Employee = _employeeRepository.GetEmployee(id);
+            //TempData will be sent to Details page
             TempData["message"] = Message;
             //return RedirectToPage("Details",new {id=id,message=Message});
             return RedirectToPage("Details", new { id = id });
