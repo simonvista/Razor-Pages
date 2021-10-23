@@ -69,10 +69,16 @@ namespace RazorPagesTutorial.Pages.Employees
             return RedirectToPage("Index");
         }
 
-        public void OnPostUpdateNotificationPreferences(int id)
+        //public void OnPostUpdateNotificationPreferences(int id)
+        //{
+        //    Message = Notify ? "Email notification was on" : "Email notification was off";
+        //    Employee = _employeeRepository.GetEmployee(id);
+        //}
+        public IActionResult OnPostUpdateNotificationPreferences(int id)
         {
             Message = Notify ? "Email notification was on" : "Email notification was off";
-            Employee = _employeeRepository.GetEmployee(id);
+            //Employee = _employeeRepository.GetEmployee(id);
+            return RedirectToPage("Details",new {id=id,message=Message});
         }
         private string ProcessingUploadedFile()
         {

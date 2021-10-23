@@ -22,7 +22,8 @@ namespace RazorPagesTutorial.Pages.Employees
         //[BindProperty] works for OnPost by default
         //[BindProperty(SupportsGet = true)]
         public int Id { get; set; }
-
+        [BindProperty(SupportsGet = true)]
+        public string Message { get; set; }
         //public void OnGet(int id=1)
         //public void OnGet(int id)
         public IActionResult OnGet(int id)
