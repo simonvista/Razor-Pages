@@ -33,8 +33,9 @@
     @*view component*@
     <div class="col-sm-8">
         @*object passed to parameter to invoke view component*@
-        @*@await Component.InvokeAsync("HeadCount",new {dept=Dept.IT});*@
-        @await Component.InvokeAsync("HeadCount", new {dept = Model.Employee.Department})
+        @*@await Component.InvokeAsync("HeadCount",new {deptName=Dept.IT});*@
+        @*@await Component.InvokeAsync("HeadCount", new {deptName = Model.Employee.Department})*@
+        <vc:head-count dept-name="@Model.Employee.Department"></vc:head-count>   
     </div>
 
     <div class="col-sm-8">

@@ -17,9 +17,9 @@ namespace RazorPagesTutorial.ViewComponents
             _employeeRepository = employeeRepository;
         }
 
-        public IViewComponentResult Invoke(Dept? dept=null)
+        public IViewComponentResult Invoke(Dept? deptName=null)
         {
-            var result=_employeeRepository.EmployeeCountByDept(dept);
+            var result=_employeeRepository.EmployeeCountByDept(deptName);
             return View(result);
         }
     }
