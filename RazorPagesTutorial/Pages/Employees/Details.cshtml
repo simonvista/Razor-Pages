@@ -21,13 +21,15 @@
     var photoPath = "~/images/" + (Model.Employee.PhotoPath ?? "noimage.png");
 }
 <div class="row justify-content-center m-3">
-    @if (!string.IsNullOrEmpty(Model.Message))
+    @*@if (!string.IsNullOrEmpty(Model.Message))*@
+    @if (TempData["message"]!=null)
     {
-        <div class="col-sm-8">
-            <div class="alert alert-primary">
-                @Model.Message
-            </div>
+    <div class="col-sm-8">
+        <div class="alert alert-primary">
+            @*@Model.Message*@
+            @TempData["message"]
         </div>
+    </div>
     }
     <div class="col-sm-8">
         <div class="card">
@@ -36,7 +38,7 @@
                 <h3>Id: @Model.Id</h3>
             </div>
             <div class="card-body text-center">
-                <img class="card-img-top" src="@photoPath" asp-append-version="true"/>
+                <img class="card-img-top" src="@photoPath" asp-append-version="true" />
                 <h4>employee id: @Model.Employee.Id</h4>
                 <h4>email: @Model.Employee.Email</h4>
                 <h4>department: @Model.Employee.Department</h4>
