@@ -53,20 +53,27 @@ namespace RazorPagesTutorial.Pages.Employees
         public IActionResult OnPost()
         {
             //delete & upload new photo
-            if (Photo != null)
+            if (ModelState.IsValid)
             {
-                if (Employee.PhotoPath!=null)
+                if (Photo != null)
                 {
-                    string filePath = Path.Combine(
-                        _webHostEnvironment.WebRootPath,
-                        "images", Employee.PhotoPath);
-                    System.IO.File.Delete(filePath);
-                }
+                    if (Employee.PhotoPath != null)
+                    {
+                        string filePath = Path.Combine(
+                            _webHostEnvironment.WebRootPath,
+                            "images", Employee.PhotoPath);
+                        System.IO.File.Delete(filePath);
+                    }
 
-                Employee.PhotoPath = ProcessingUploadedFile();
+                    Employee.PhotoPath = ProcessingUploadedFile();
+                }
+                Employee = _employeeRepository.Update(Employee);
+                return RedirectToPage("Index");
             }
-            Employee = _employeeRepository.Update(Employee);
-            return RedirectToPage("Index");
+            else
+            {
+                return Page();  //stay on current page if input is not valid
+            }
         }
 
         //public void OnPostUpdateNotificationPreferences(int id)
