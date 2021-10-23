@@ -40,14 +40,20 @@ namespace RazorPagesTutorial.Pages.Employees
         //    Employee = _employeeRepository.Update(employee);
         //    return RedirectToPage("/Index");
         //}
-        public IActionResult OnGet(int id)
+        public IActionResult OnGet(int? id)
         {
-            Employee = _employeeRepository.GetEmployee(id);
-            if (Employee == null)
+            if (id.HasValue)
             {
-                return RedirectToPage("NotFound");
+                Employee = _employeeRepository.GetEmployee(id.Value);
+                if (Employee == null)
+                {
+                    return RedirectToPage("/NotFound");
+                }
             }
-
+            else
+            {
+                Employee = new Employee();
+            }
             return Page();
         }
         public IActionResult OnPost()
@@ -67,7 +73,15 @@ namespace RazorPagesTutorial.Pages.Employees
 
                     Employee.PhotoPath = ProcessingUploadedFile();
                 }
-                Employee = _employeeRepository.Update(Employee);
+
+                if (Employee.Id>0)
+                {
+                    Employee = _employeeRepository.Update(Employee);
+                }
+                else
+                {
+                    Employee = _employeeRepository.Add(Employee);
+                }
                 return RedirectToPage("Index");
             }
             else

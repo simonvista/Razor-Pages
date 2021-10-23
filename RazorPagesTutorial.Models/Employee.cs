@@ -20,6 +20,7 @@ namespace RazorPagesTutorial.Models
         [Display(Name = "office email")]
         public string Email { get; set; }
         public string PhotoPath { get; set; }
+        [Required]
         public Dept? Department { get; set; }
     }
 }

@@ -70,5 +70,12 @@ namespace RazorPagesTutorial.Services
 
             return employeeToUpdate;
         }
+
+        public Employee Add(Employee newEmployee)
+        {
+            newEmployee.Id = _employees.Max(e => e.Id) + 1;
+            _employees.Add(newEmployee);
+            return newEmployee;
+        }
     }
 }
