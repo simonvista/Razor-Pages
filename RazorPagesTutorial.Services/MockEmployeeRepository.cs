@@ -103,5 +103,14 @@ namespace RazorPagesTutorial.Services
                     Count = g.Count()
                 }).ToList();
         }
+
+        public IEnumerable<Employee> Search(string searchTerm)
+        {
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                return _employees;
+            }
+            return _employees.Where(e => e.Name.Contains(searchTerm) || e.Email.Contains(searchTerm));
+        }
     }
 }

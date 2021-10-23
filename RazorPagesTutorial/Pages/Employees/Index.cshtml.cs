@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,8 @@ namespace RazorPagesTutorial.Pages.Employees
     {
         private readonly IEmployeeRepository _employeeRepository;
         public IEnumerable<Employee> Employees { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
 
         public IndexModel(IEmployeeRepository employeeRepository)
         {
@@ -21,7 +24,9 @@ namespace RazorPagesTutorial.Pages.Employees
         }
         public void OnGet()
         {
-            Employees = _employeeRepository.GetAllEmployees();
+            //Employees = _employeeRepository.GetAllEmployees();
+            Employees = _employeeRepository.Search(SearchTerm);
+
         }
     }
 }
