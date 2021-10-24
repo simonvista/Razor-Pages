@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using RazorPagesTutorial.Models;
 
@@ -16,6 +17,7 @@ namespace RazorPagesTutorial.Services
             _context = context;
         }
         //FromSqlRaw: execute sql query or stored procedure and return entities
+        //ExecuteSqlRaw: execute sql query or stored procedure to do DB operations but with no returns
         public IEnumerable<Employee> GetAllEmployees()
         {
             //LINQ
@@ -28,13 +30,21 @@ namespace RazorPagesTutorial.Services
 
         public Employee GetEmployee(int id)
         {
+            //SqlParameter obj
+            SqlParameter parameter = new SqlParameter("@Id", id);
             //LINQ query
             //return _context.Employees.Find(id);
             //FromSqlRaw runs SQL stored procedure
+            //placeholder syntax
+            //return _context.Employees
+            //                .FromSqlRaw<Employee>("spGetEmployeeById {0}",id)
+            //                .ToList()
+            //                .FirstOrDefault();
+            //SqlParameter obj
             return _context.Employees
-                            .FromSqlRaw<Employee>("spGetEmployeeById {0}",id)
-                            .ToList()
-                            .FirstOrDefault();
+                .FromSqlRaw<Employee>("spGetEmployeeById @Id", parameter)
+                .ToList()
+                .FirstOrDefault();
         }
 
         public Employee Update(Employee updatedEmployee)
@@ -47,8 +57,17 @@ namespace RazorPagesTutorial.Services
 
         public Employee Add(Employee newEmployee)
         {
-            _context.Employees.Add(newEmployee);
-            _context.SaveChanges();
+            //LINQ
+            //_context.Employees.Add(newEmployee);
+            //_context.SaveChanges();
+            //return newEmployee;
+            //ExecuteSqlRaw
+            _context.Database.ExecuteSqlRaw(
+                "spInsertEmployee {0},{1},{2},{3}",
+                newEmployee.Name,
+                newEmployee.Email,
+                newEmployee.PhotoPath,
+                newEmployee.Department);
             return newEmployee;
         }
 
