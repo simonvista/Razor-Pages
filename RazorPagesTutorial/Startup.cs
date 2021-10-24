@@ -32,7 +32,10 @@ namespace RazorPagesTutorial
             });
             services.AddRazorPages();
             //IOC
-            services.AddSingleton<IEmployeeRepository,MockEmployeeRepository>();
+            //local repo
+            //services.AddSingleton<IEmployeeRepository,MockEmployeeRepository>();
+            //SQL DB
+            services.AddScoped<IEmployeeRepository, SqlEmployeeRepository>();
             //set url lower case
             services.Configure<RouteOptions>(options =>
             {
