@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 using RazorPagesTutorial.Models;
 
 namespace RazorPagesTutorial.Services
@@ -21,7 +22,13 @@ namespace RazorPagesTutorial.Services
 
         public Employee GetEmployee(int id)
         {
-            return _context.Employees.Find(id);
+            //LINQ query
+            //return _context.Employees.Find(id);
+            //SQL stored procedure
+            return _context.Employees
+                            .FromSqlRaw<Employee>("spGetEmployeeById {0}",id)
+                            .ToList()
+                            .FirstOrDefault();
         }
 
         public Employee Update(Employee updatedEmployee)
