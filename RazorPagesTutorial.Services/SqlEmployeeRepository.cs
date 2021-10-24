@@ -15,16 +15,22 @@ namespace RazorPagesTutorial.Services
         {
             _context = context;
         }
+        //FromSqlRaw: execute sql query or stored procedure and return entities
         public IEnumerable<Employee> GetAllEmployees()
         {
-            return _context.Employees;
+            //LINQ
+            //return _context.Employees;
+            //FromSqlRaw runs sql
+            return _context.Employees
+                .FromSqlRaw<Employee>("select * from employees")
+                .ToList();
         }
 
         public Employee GetEmployee(int id)
         {
             //LINQ query
             //return _context.Employees.Find(id);
-            //SQL stored procedure
+            //FromSqlRaw runs SQL stored procedure
             return _context.Employees
                             .FromSqlRaw<Employee>("spGetEmployeeById {0}",id)
                             .ToList()
